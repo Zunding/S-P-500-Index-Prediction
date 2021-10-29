@@ -10,7 +10,6 @@ def csv_import(data_dir, csv_filename):
     return data_pd
 
 def data_normalization(data_pd, stock_price, stock_trade):
-    #for name, group in Date_group:
     price = pd.concat(data_pd.loc[:, k] for k in stock_price)
     data_pd[stock_price] = data_pd[stock_price].applymap(lambda x: (x - price.min()) / (price.max() - price.min()))
     trade = pd.concat(data_pd.loc[:, k] for k in stock_trade)
